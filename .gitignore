@@ -1,0 +1,6 @@
+*.o
+*.out
+
+__pycache__/
+.vscode/
+.zip
