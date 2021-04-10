@@ -7,9 +7,12 @@ import ec_math
 
 def hash_message(message):
     hashed = int.from_bytes(hashlib.sha3_256(message).digest(), sys.byteorder)
-    if hashed.bit_length() - cfg.SUBGROUP_ORDER.bit_length():
-        truncated = hashed >> (hashed.bit_length() - cfg.SUBGROUP_ORDER.bit_length())
-    return truncated
+    print("HASHED: ", hashed)
+    if (hashed.bit_length() - cfg.SUBGROUP_ORDER.bit_length()) > 0:
+        hashed = hashed >> (hashed.bit_length() - cfg.SUBGROUP_ORDER.bit_length())
+    else:
+        print("WOW")
+    return hashed
 
 
 def sign(message, private_key):
