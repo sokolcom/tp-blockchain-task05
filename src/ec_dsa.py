@@ -7,7 +7,8 @@ import ec_math
 
 def hash_message(message):
     hashed = int.from_bytes(hashlib.sha3_256(message).digest(), sys.byteorder)
-    truncated = hashed >> (hashed.bit_length() - cfg.SUBGROUP_ORDER.bit_length())
+    if hashed.bit_length() - cfg.SUBGROUP_ORDER.bit_length():
+        truncated = hashed >> (hashed.bit_length() - cfg.SUBGROUP_ORDER.bit_length())
     return truncated
 
 
