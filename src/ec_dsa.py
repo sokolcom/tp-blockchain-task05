@@ -7,11 +7,8 @@ import ec_math
 
 def hash_message(message):
     hashed = int.from_bytes(hashlib.sha3_256(message).digest(), sys.byteorder)
-    print("HASHED: ", hashed)
     if (hashed.bit_length() - cfg.SUBGROUP_ORDER.bit_length()) > 0:
         hashed = hashed >> (hashed.bit_length() - cfg.SUBGROUP_ORDER.bit_length())
-    else:
-        print("WOW")
     return hashed
 
 
