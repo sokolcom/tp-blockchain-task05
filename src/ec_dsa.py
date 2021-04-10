@@ -1,6 +1,5 @@
 import sys
 import hashlib
-import random
 
 import config as cfg
 import ec_math
